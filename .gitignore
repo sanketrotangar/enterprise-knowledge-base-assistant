@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+
+.venv/
+venv/
+
+.env
+
+uploads/
+
+.pytest_cache/
+.coverage
+
+notes.md
+commands.txt
+
+eval/seed_manifest.json
+eval/last_run.json
+
+md-files    
+
+agent skills/

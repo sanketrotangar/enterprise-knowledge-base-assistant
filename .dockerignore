@@ -1,0 +1,28 @@
+# Docker ignore file
+# Exclude unnecessary files from Docker build context
+
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.mypy_cache
+
+.env
+.env.local
+.env.*.local
+
+.git
+.gitignore
+
+.vscode
+.idea
+
+uploads/
+*.md
+!README.md
+
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+node_modules/

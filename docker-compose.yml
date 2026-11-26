@@ -1,0 +1,112 @@
+# Enterprise Knowledge Assistant - Docker Compose
+# ------------------------------------------------
+# Runs all services for local development
+#
+# Services:
+# - api: FastAPI application server
+# - celery_worker: Background task processor
+# - db: PostgreSQL database
+# - redis: Cache + message broker
+# - qdrant: Vector database
+#
+# Usage:
+#   docker-compose up              # Start all services
+#   docker-compose up -d           # Start in background
+#   docker-compose up --build      # Rebuild and start
+#   docker-compose down            # Stop all services
+#   docker-compose logs -f api     # Follow API logs
+
+services:
+  # FastAPI Application
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+psycopg://postgres:postgres@db:5432/ekb
+      - REDIS_URL=redis://redis:6379/0
+      - QDRANT_URL=http://qdrant:6333
+      - CELERY_BROKER_URL=redis://redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
+      - SECRET_KEY=dev-secret-key-change-in-production
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+  # # Celery Worker
+  # celery_worker:
+  #   build: .
+  #   environment:
+  #     - DATABASE_URL=postgresql+psycopg://postgres:postgres@db:5432/ekb
+  #     - REDIS_URL=redis://redis:6379/0
+  #     - QDRANT_URL=http://qdrant:6333
+  #     - CELERY_BROKER_URL=redis://redis:6379/1
+  #     - CELERY_RESULT_BACKEND=redis://redis:6379/2
+  #   volumes:
+  #     - ./uploads:/app/uploads
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #     qdrant:
+  #       condition: service_healthy
+  #   command: celery -A app.core.celery:celery_app worker --loglevel=info
+
+  # PostgreSQL + pgvector (required for chunks.embedding)
+  # Host: localhost:5436  |  DB: ekb  |  owner: postgres/postgres
+  # App runtime must use app_user (created by Alembic), not postgres.
+  db:
+    image: pgvector/pgvector:pg15
+    ports:
+      - "5436:5432"
+    environment:
+      - POSTGRES_DB=ekb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Redis (Cache + Message Broker)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Qdrant (Vector Database)
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/6333"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:
+  qdrant_data:

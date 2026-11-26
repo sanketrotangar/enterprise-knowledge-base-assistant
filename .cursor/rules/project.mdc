@@ -1,0 +1,18 @@
+---
+alwaysApply: true
+---
+Before any task: read `DECISIONS.md` and the **Status** section of `docs/build.md`.
+Those plus `docs/diagrams/*.drawio` are the source of truth. Chat is not.
+
+Hard rules:
+1. Only implement what the **current slice** in `docs/build.md` lists. If something else seems needed, say so and stop.
+2. Do not invent tables, roles, APIs, or flows not in diagrams + `docs/build.md`. Target beta roles are `user` | `manager` | `admin` only (no department/clearance in new work).
+3. Every DB query runs inside a transaction with org/user/role set via `SET LOCAL`. No exceptions.
+4. Never bypass RLS: no superuser connection, no BYPASSRLS role, no app-only filters replacing policies (option B).
+5. Schema changes only through Alembic. Never `create_all`. New tenant table → RLS + FORCE + WITH CHECK in the same migration.
+6. Upload / delete / set-roles = manager/admin only. Ingest and `sync_chunk_roles` = queue workers; UI must not block on embed or role-copy.
+7. Prefer reuse of existing `app/features/*` modules. If target conflicts with legacy code, state the conflict before rewriting. Do not greenfield-delete the repo.
+8. Do not add phase-2 scope (S3, extra features, premature scaling) or overwrite frozen eval baselines.
+9. Do not rename fields in `frontend/src/types/api.ts` unless the current slice explicitly requires an API contract change.
+10. Frontend: reuse shared components under `frontend/src/components/ui` and feature folders (`dashboard`, `documents`, `layout`). Do not recreate buttons/cards/badges/metrics per page. Theme colors only via CSS variables / Tailwind tokens in `index.css` + `tailwind.config.js` (use-case names like `action`, `ink`, `status-ok` — no raw hex in JSX).
+11. Finish each task with: what changed, what tests prove it, what is still not done — and update the Status table in `docs/build.md`.

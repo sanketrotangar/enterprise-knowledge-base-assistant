@@ -1,0 +1,43 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Configuration
+pydantic-settings
+
+# Database
+sqlalchemy
+psycopg[binary]
+alembic
+pgvector
+
+# Tests
+pytest
+testcontainers[postgres]
+
+# Authentication
+python-jose[cryptography]
+bcrypt
+
+# PDF Parsing
+pypdf
+
+# Vector Search
+qdrant-client
+
+# Embeddings
+sentence-transformers
+
+# Background Tasks
+celery[redis]
+
+# Redis
+redis
+
+# LLM (Groq speaks the OpenAI API dialect, so the openai client is reused)
+openai
+
+# Utilities
+python-dotenv
+PyYAML
