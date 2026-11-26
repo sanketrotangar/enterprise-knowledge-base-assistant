@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Use-case tokens (not brand-only names).
+  Components must use these via Tailwind theme keys — no raw hex in JSX.
+*/
+@layer base {
+  :root {
+    /* Surfaces */
+    --canvas: 210 20% 98%;
+    --panel: 0 0% 100%;
+    --panel-muted: 210 16% 96%;
+    --panel-elevated: 0 0% 100%;
+
+    /* Ink (text) */
+    --ink: 222 47% 11%;
+    --ink-secondary: 215 16% 40%;
+    --ink-subtle: 215 14% 55%;
+    --ink-inverse: 0 0% 100%;
+
+    /* Lines */
+    --line: 214 20% 90%;
+    --line-strong: 214 18% 82%;
+
+    /* Primary action (CTAs, active nav) */
+    --action: 173 58% 29%;
+    --action-hover: 174 61% 24%;
+    --action-soft: 166 76% 92%;
+    --action-foreground: 0 0% 100%;
+
+    /* Focus */
+    --ring: 173 58% 29%;
+
+    /* Status — semantic feedback */
+    --status-ok: 160 84% 30%;
+    --status-ok-soft: 152 76% 95%;
+    --status-warn: 32 95% 37%;
+    --status-warn-soft: 48 96% 94%;
+    --status-bad: 0 72% 45%;
+    --status-bad-soft: 0 86% 96%;
+    --status-info: 217 71% 45%;
+    --status-info-soft: 214 95% 95%;
+
+    /* Dashboard metric accents */
+    --metric-docs: 173 58% 29%;
+    --metric-chunks: 262 52% 47%;
+    --metric-latency: 217 71% 45%;
+    --metric-queue: 32 95% 37%;
+
+    --radius: 0.75rem;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-panel;
+  }
+}
