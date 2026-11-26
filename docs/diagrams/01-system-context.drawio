@@ -1,0 +1,87 @@
+<mxfile host="65bd71144e">
+    <diagram id="system-context" name="01-System-Context">
+        <mxGraphModel dx="798" dy="572" grid="0" gridSize="100" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Knowledge Assistant — System Context (Beta)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="520" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="subtitle" value="Multi-org · roles: user / manager / admin · files in store + metadata in DB · answers with sources" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="48" width="700" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor-employee" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="200" width="40" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor-employee-label" value="Employee&#10;(user)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="285" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor-admin" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="400" width="40" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor-admin-label" value="Manager / Admin" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="485" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="system-boundary" value="Knowledge Assistant" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=10;spacingTop=6;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=14;fontColor=#000000;dashed=0;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="120" width="520" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="web-app" value="Web App&#10;(Browser UI)&#10;&#10;login · upload · list&#10;delete · preview&#10;set doc roles · ask" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;strokeColor=#000000;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="180" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="api" value="API&#10;&#10;auth · ingest&#10;doc management&#10;search / answer&#10;sources" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;strokeColor=#000000;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="180" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="database" value="Database&#10;&#10;orgs · users · roles&#10;doc metadata&#10;permissions&#10;chunks / search&#10;query + sources" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#FFFFFF;strokeColor=#000000;fontSize=11;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="360" width="180" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="file-store" value="File Store&#10;(disk / object storage)&#10;&#10;raw files&#10;upload · migrate&#10;preview bytes" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="160" width="180" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="llm" value="LLM Provider&#10;&#10;answer from&#10;retrieved docs only" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#F5F5F5;strokeColor=#666666;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="360" width="180" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend" value="Legend&#10;Blue box = system boundary&#10;White = our components&#10;Yellow = file bytes (B: store + DB metadata)&#10;Grey = external service" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="560" width="280" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="note" value="Locked: many orgs · role access (user/manager/admin) · show sources · beta = full e2e for real users" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;fontStyle=2;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="570" width="520" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" value="use" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=10;endArrow=block;endFill=1;" parent="1" source="actor-employee" target="web-app" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="manage docs / roles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=10;endArrow=block;endFill=1;" parent="1" source="actor-admin" target="web-app" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="HTTPS&#10;login / upload / ask" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=10;endArrow=block;endFill=1;" parent="1" source="web-app" target="api" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="metadata +&#10;permissions +&#10;search data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=10;endArrow=block;endFill=1;startArrow=block;startFill=0;" parent="1" source="api" target="database" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="560" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e5" value="put / get / delete&#10;file bytes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=10;endArrow=block;endFill=1;" parent="1" source="api" target="file-store" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" value="prompt +&#10;allowed chunks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=10;endArrow=block;endFill=1;" parent="1" source="api" target="llm" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="720" y="250"/>
+                            <mxPoint x="720" y="410"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e7" value="answer text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;fontSize=10;dashed=1;endArrow=block;endFill=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="llm" target="api" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="780" y="435"/>
+                            <mxPoint x="780" y="285"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
