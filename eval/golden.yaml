@@ -1,0 +1,202 @@
+# Golden retrieval set. Edit freely.
+# expected_doc is the corpus id (filename stem, also the frontmatter id).
+# should_answer: true  -> this user should retrieve that doc in the top 5
+# should_answer: false -> this user must NOT retrieve that doc (permission)
+
+- id: g01
+  user: intern-hr
+  question: How many days of annual leave does Northwind currently grant?
+  expected_doc: leave-policy-v2
+  should_answer: true
+
+- id: g02
+  user: intern-hr
+  question: What is the unused-leave carry-over cap under the current Northwind policy?
+  expected_doc: leave-policy-v2
+  should_answer: true
+
+- id: g03
+  user: intern-hr
+  question: How many annual leave days did Northwind grant before the latest policy revision?
+  expected_doc: leave-policy-v1
+  should_answer: true
+
+- id: g04
+  user: intern-hr
+  question: How much notice does a Northwind employee have to give to resign?
+  expected_doc: notice-period-employment
+  should_answer: true
+
+- id: g05
+  user: intern-hr
+  question: Where do new Northwind hires spend their first week?
+  expected_doc: intern-onboarding
+  should_answer: true
+
+- id: g06
+  user: intern-hr
+  question: What is the Northwind CEO base salary?
+  expected_doc: exec-salary-sheet
+  should_answer: false
+
+- id: g07
+  user: intern-hr
+  question: What is Project Lantern's Q3 operating budget?
+  expected_doc: finance-q3-budget
+  should_answer: false
+
+- id: g08
+  user: intern-hr
+  question: Who covers weekend on-call for Northwind engineering?
+  expected_doc: on-call-rota
+  should_answer: false
+
+- id: g09
+  user: intern-hr
+  question: Can I work from another country for a full month?
+  expected_doc: remote-work-policy
+  should_answer: false
+
+- id: g10
+  user: intern-hr
+  question: How many annual leave days does Globex grant?
+  expected_doc: leave-policy-globex
+  should_answer: false
+
+- id: g11
+  user: hr-manager
+  question: What is the current Northwind annual leave entitlement?
+  expected_doc: leave-policy-v2
+  should_answer: true
+
+- id: g12
+  user: hr-manager
+  question: What resignation notice does the HR operations manual require?
+  expected_doc: notice-period-hr-manual
+  should_answer: true
+
+- id: g13
+  user: hr-manager
+  question: How should interviewers score a system-design round?
+  expected_doc: hiring-scorecard
+  should_answer: true
+
+- id: g14
+  user: hr-manager
+  question: Does the Northwind health plan cover orthodontics?
+  expected_doc: health-benefits
+  should_answer: true
+
+- id: g15
+  user: hr-manager
+  question: What is the CFO target bonus percentage?
+  expected_doc: exec-salary-sheet
+  should_answer: false
+
+- id: g16
+  user: hr-manager
+  question: What is Project Lantern's contractor budget this quarter?
+  expected_doc: finance-q3-budget
+  should_answer: false
+
+- id: g17
+  user: engineer
+  question: What is the rule for swapping an on-call shift?
+  expected_doc: on-call-rota
+  should_answer: true
+
+- id: g18
+  user: engineer
+  question: How many engineers does the Anvil capacity plan add in Q3?
+  expected_doc: engineering-capacity-plan
+  should_answer: true
+
+- id: g19
+  user: engineer
+  question: How many consecutive days may I work abroad?
+  expected_doc: remote-work-policy
+  should_answer: true
+
+- id: g20
+  user: engineer
+  question: What is Project Lantern's Q3 OPEX cap?
+  expected_doc: finance-q3-budget
+  should_answer: false
+
+- id: g21
+  user: engineer
+  question: How many annual leave days does Northwind currently grant?
+  expected_doc: leave-policy-v2
+  should_answer: false
+
+- id: g22
+  user: engineer
+  question: Does the health plan cover orthodontics?
+  expected_doc: health-benefits
+  should_answer: false
+
+- id: g23
+  user: finance-head
+  question: What is Project Lantern's Q3 OPEX envelope?
+  expected_doc: finance-q3-budget
+  should_answer: true
+
+- id: g24
+  user: finance-head
+  question: Are receipts required for expenses under fifty dollars?
+  expected_doc: expense-reimbursement
+  should_answer: true
+
+- id: g25
+  user: finance-head
+  question: What is Band-CX base pay at Northwind?
+  expected_doc: exec-salary-sheet
+  should_answer: false
+
+- id: g26
+  user: finance-head
+  question: How many heads does the Anvil plan add in Q3?
+  expected_doc: engineering-capacity-plan
+  should_answer: false
+
+- id: g27
+  user: finance-head
+  question: How many annual leave days does Northwind currently grant?
+  expected_doc: leave-policy-v2
+  should_answer: false
+
+- id: g28
+  user: tenant2-user
+  question: How many annual leave days does Globex currently grant?
+  expected_doc: leave-policy-globex
+  should_answer: true
+
+- id: g29
+  user: tenant2-user
+  question: How many annual leave days does Northwind currently grant?
+  expected_doc: leave-policy-v2
+  should_answer: false
+
+- id: g30
+  user: tenant2-user
+  question: What is the Northwind CEO base salary?
+  expected_doc: exec-salary-sheet
+  should_answer: false
+
+- id: g31
+  user: hr-comp
+  question: What is Band-CX base pay at Northwind?
+  expected_doc: exec-salary-sheet
+  should_answer: true
+
+- id: g32
+  user: hr-comp
+  question: What is the Northwind CEO base salary?
+  expected_doc: exec-salary-sheet
+  should_answer: true
+
+- id: g33
+  user: hr-comp
+  question: What is the CFO target bonus percentage?
+  expected_doc: exec-salary-sheet
+  should_answer: true

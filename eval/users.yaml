@@ -1,0 +1,65 @@
+# Eval identities. Readable on purpose — edit freely.
+# Clearance is 0-3 (intern=0 ... exec=3). Department is one of:
+#   hr | engineering | finance | general
+#
+# tenant-1 reuses the existing DEV org UUID so local uploads stay in one place.
+# tenant-2 is a second company used only for cross-tenant leak tests.
+
+tenants:
+  - id: tenant-1
+    uuid: "11111111-1111-1111-1111-111111111111"
+    name: Northwind Holdings
+    slug: default
+  - id: tenant-2
+    uuid: "22222222-2222-2222-2222-222222222222"
+    name: Globex Trading
+    slug: globex
+
+users:
+  - id: intern-hr
+    tenant: tenant-1
+    name: Priya Shah
+    email: priya.shah@northwind.test
+    department: hr
+    clearance: 0
+    role: intern
+
+  - id: hr-manager
+    tenant: tenant-1
+    name: Marcus Hale
+    email: marcus.hale@northwind.test
+    department: hr
+    clearance: 2
+    role: manager
+
+  - id: hr-comp
+    tenant: tenant-1
+    name: Jordan Blake
+    email: jordan.blake@northwind.test
+    department: hr
+    clearance: 3
+    role: admin
+
+  - id: engineer
+    tenant: tenant-1
+    name: Elena Voss
+    email: elena.voss@northwind.test
+    department: engineering
+    clearance: 1
+    role: employee
+
+  - id: finance-head
+    tenant: tenant-1
+    name: David Chen
+    email: david.chen@northwind.test
+    department: finance
+    clearance: 3
+    role: admin
+
+  - id: tenant2-user
+    tenant: tenant-2
+    name: Amina Okonkwo
+    email: amina.okonkwo@globex.test
+    department: hr
+    clearance: 0
+    role: intern
